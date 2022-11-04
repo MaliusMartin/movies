@@ -1,27 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
 
-
+// import './App.css';
+import Navbar from './Components/Navbar';
+import Home from './Components/Home';
+import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
+import Create from './Components/Create';
+import BlogDetails from './Components/BlogDetails';
+import NotFound from './Components/NotFound';
 
 function App() {
+  // const title= 'welcome to the new blog';
+  // let likes =2000;
+//object and boolean do not wo rk
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-       
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar/>
+      
+<div  className='content'>
+
+<Switch>
+<Route exact path='/'>
+   <Home/>
+</Route>
+
+<Route path='/Create'>
+   <Create/>
+</Route>
+<Route path='/blogs/:id'>
+   <BlogDetails/>
+</Route>
+
+<Route path='*'>
+  <NotFound/>
+</Route>
+
+</Switch>
+
+  {/* <h1> {title}</h1>
+  <p>{likes}</p> */}
+</div>
+
     </div>
+    </Router>
+
   );
 }
 
